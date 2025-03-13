@@ -162,9 +162,13 @@
 
   syntaxHighlighting.enable = true;
       initExtra = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       source <(fzf --zsh)
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+      zvm_after_init() {
+      bindkey -r '^R'  # Remove zsh-vi-mode binding
+      bindkey '^R' fzf-history-widget  # Set fzf history search
+    }
     '';
 
 
