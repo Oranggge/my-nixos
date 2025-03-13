@@ -120,30 +120,38 @@
   ];
 
     services.dbus.enable = true;
+    
+  programs.xwayland.enable = true;  # Just in case
+
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  };
 
 
     # Enable the gnome-keyring secrets vault. 
     # Will be exposed through DBus to programs willing to store secrets.
 #   services.gnome.gnome-keyring.enable = true;
 
-   environment.variables = {
-    # Force Wayland for Electron Apps (Obsidian, Anydesk, Discord, VSCode, etc.)
-    NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-
-    # Wayland for Qt Applications
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
-    # Wayland for GTK Applications
-#    GDK_BACKEND = "wayland";
-
-    # Enable Wayland portals (for file pickers, copy-paste, etc.)
-    GTK_USE_PORTAL = "1";
-  };
+#   environment.variables = {
+#    # Force Wayland for Electron Apps (Obsidian, Anydesk, Discord, VSCode, etc.)
+#    NIXOS_OZONE_WL = "1";
+#    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+#
+#    # Wayland for Qt Applications
+#    QT_QPA_PLATFORM = "wayland";
+#    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+#
+#    # Wayland for GTK Applications
+##    GDK_BACKEND = "wayland";
+#
+#    # Enable Wayland portals (for file pickers, copy-paste, etc.)
+#    GTK_USE_PORTAL = "1";
+#  };
 
   # Enable XWayland (for compatibility)
-  services.xserver.enable = false;
+  services.xserver.enable = true;
   #services.xdg-desktop-portal.enable = true;
 
 
@@ -177,12 +185,12 @@
     flake = "/etc/nixos/";
   };
 
-  xdg.portal = {
-  enable = true;
-  extraPortals = with pkgs; [
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-gtk
-  ];
+ # xdg.portal = {
+ # enable = true;
+ # extraPortals = with pkgs; [
+ #   xdg-desktop-portal-wlr
+ #   xdg-desktop-portal-gtk
+ # ];
 #  wlr = {
 #    enable = true;
 #    settings = { # uninteresting for this problem, for completeness only
@@ -194,7 +202,7 @@
 #      };
 #    };
 #  };
-};
+#};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
