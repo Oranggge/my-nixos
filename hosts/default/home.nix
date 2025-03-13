@@ -21,6 +21,8 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    wl-clipboard
+    discord
     kickoff
     unzip
     orca-slicer
@@ -178,6 +180,7 @@
     vi = "nvim";
     update = "nh os switch /etc/nixos";
     cat = "bat";
+    cop = "wl-copy";
   };
   history.size = 10000;
 
