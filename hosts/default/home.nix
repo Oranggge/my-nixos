@@ -22,7 +22,8 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     kickoff
-#    cura-appimage
+    unzip
+    orca-slicer
     bemenu # need for screenshots
     htop
     btop
