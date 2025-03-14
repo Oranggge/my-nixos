@@ -44,10 +44,15 @@
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
 
+
+
+
       # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
       # server_names = [ ... ];
     };
   };
+
+
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -102,7 +107,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+  #virtualbox
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #keymapp
+    # to be able to edit the keyboard layout here what needed to do:
+    #nix-shell -p xorg.xhost
+    #[nix-shell:~]$ xhost +SI:localuser:root
+    # sudo keymapp
     wget
     #neovim
     git
@@ -118,6 +129,9 @@
     xdg-desktop-portal-wlr
 
   ];
+
+   virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "nixi" ];
 
     services.dbus.enable = true;
     
