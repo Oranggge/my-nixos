@@ -125,6 +125,15 @@
     extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = {
+  "text/html" = "org.qutebrowser.qutebrowser.desktop";
+  "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+  "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+  "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+  "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+};
+
 
     # Enable the gnome-keyring secrets vault. 
     # Will be exposed through DBus to programs willing to store secrets.
