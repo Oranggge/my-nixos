@@ -25,33 +25,15 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "none";
+  #networking.networkmanager.dns = "none";
   networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
+
     services.dnscrypt-proxy2 = {
     enable = true;
-    # Settings reference:
-    # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
     settings = {
-      ipv6_servers = true;
-      require_dnssec = true;
-      # Add this to test if dnscrypt-proxy is actually used to resolve DNS requests
-      query_log.file = "/var/log/dnscrypt-proxy/query.log";
-      sources.public-resolvers = {
-        urls = [
-        "https://doh.applied-privacy.net/query"
-        ];
-        cache_file = "/var/cache/dnscrypt-proxy/public-resolvers.md";
-        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
-      };
-
-
-
-
-      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      # server_names = [ ... ];
+      server_names = [ "applied-privacy" ];
     };
   };
-
 
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
