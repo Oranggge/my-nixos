@@ -21,11 +21,16 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    code-cursor
+    ungoogled-chromium
+    libreoffice
     hugo
+    go
     dino
     profanity
     wl-clipboard
     discord
+    tmux
     kickoff
     unzip
     orca-slicer
@@ -184,6 +189,7 @@
     update = "nh os switch /etc/nixos";
     cat = "bat";
     cop = "wl-copy";
+    share = "sharecmd";
   };
   history.size = 10000;
 
