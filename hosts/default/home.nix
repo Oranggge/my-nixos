@@ -21,12 +21,16 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    imagemagick
+    calc
+    iputils
     code-cursor
     ungoogled-chromium
     libreoffice
     hugo
     go
     dino
+    nautilus
     profanity
     wl-clipboard
     discord
@@ -60,6 +64,7 @@
     qrencode
     mpv
     dnscrypt-proxy
+    busybox
     
 
 

@@ -35,6 +35,15 @@
     };
   };
 
+  services.swayidle = {
+  enable = true;
+  timeouts = [
+    { timeout = 300; command = "swaylock -f -c 000000"; }
+    { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
+  ];
+};
+
+
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
