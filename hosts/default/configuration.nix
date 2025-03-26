@@ -28,21 +28,14 @@
   #networking.networkmanager.dns = "none";
   networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
 
+
     services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
       server_names = [ "applied-privacy" ];
     };
   };
-
-  services.swayidle = {
-  enable = true;
-  timeouts = [
-    { timeout = 300; command = "swaylock -f -c 000000"; }
-    { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
-  ];
-};
-
+  
 
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth

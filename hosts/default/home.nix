@@ -22,7 +22,11 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     imagemagick
+    wireguard-tools
+    ripgrep-all
     calc
+    pandoc
+    tetex #need for pandoc to work
     iputils
     code-cursor
     ungoogled-chromium
@@ -35,6 +39,7 @@
     wl-clipboard
     discord
     tmux
+    librsvg # for pandoc to work
     kickoff
     unzip
     orca-slicer
