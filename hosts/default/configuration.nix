@@ -25,17 +25,42 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  #networking.networkmanager.dns = "none";
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
+#  networking.networkmanager.dns = "none";
+#  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
 
+  networking = {
+    nameservers = [ "127.0.0.1" "::1" "1.1.1.1" ];
+    # If using dhcpcd:
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    # If using NetworkManager:
+    networkmanager.dns = "none";
+  };
 
-    services.dnscrypt-proxy2 = {
+ services.dnscrypt-proxy2 = {
     enable = true;
+    # Settings reference:
+    # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
     settings = {
-      server_names = [ "applied-privacy" ];
+      ipv6_servers = true;
+      require_dnssec = true;
+      # Add this to test if dnscrypt-proxy is actually used to resolve DNS requests
+      query_log.file = "/var/log/dnscrypt-proxy/query.log";
+      sources.public-resolvers = {
+        urls = [
+          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+        ];
+        cache_file = "/var/cache/dnscrypt-proxy/public-resolvers.md";
+        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+      };
+
+      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
+      server_names = [ "doh.appliedprivacy.net"  ];
     };
   };
-  
+
+  networking.wg-quick.interfaces.wg0.configFile = "/etc/wireguard/wg0.conf";
+
 
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -100,6 +125,9 @@
     # sudo keymapp
     wget
     #neovim
+    gnugrep
+    igrep
+    xplugd
     git
     firefox
     kitty
@@ -111,15 +139,22 @@
 
     xdg-desktop-portal
     xdg-desktop-portal-wlr
+    arandr
+    autorandr
+    xorg.xrandr
 
+    python39
   ];
 
    virtualisation.virtualbox.host.enable = true;
    users.extraGroups.vboxusers.members = [ "nixi" ];
 
-    services.dbus.enable = true;
-    
-  programs.xwayland.enable = true;  # Just in case
+   services.dbus.enable = true;
+# smt for bash scripts
+   services.envfs.enable = true;
+
+   
+#  programs.xwayland.enable = true;  # Just in case
 
 
   xdg.portal = {
@@ -193,7 +228,6 @@
      ];
     };
   };
-
 
 #  programs.hyprland = {
 #  enable = true;
