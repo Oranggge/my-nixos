@@ -144,6 +144,11 @@
     xorg.xrandr
 
     python39
+    ollama
+    protege
+    jq
+    pdftk
+    poppler-utils
   ];
 
    virtualisation.virtualbox.host.enable = true;
@@ -228,6 +233,11 @@
      ];
     };
   };
+
+virtualisation.docker.rootless = {
+  enable = true;
+  setSocketVariable = true;
+};
 
 #  programs.hyprland = {
 #  enable = true;

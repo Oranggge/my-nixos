@@ -198,7 +198,7 @@
 
 
   shellAliases = {
-    ll = "ls -l";
+    ll = "ls -lh";
     vi = "nvim";
     update = "nh os switch /etc/nixos";
     cat = "bat";
