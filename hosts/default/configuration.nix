@@ -118,6 +118,7 @@
   environment.systemPackages = with pkgs; [
   #virtualbox
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    gnumake
     #keymapp
     # to be able to edit the keyboard layout here what needed to do:
     #nix-shell -p xorg.xhost
@@ -149,6 +150,8 @@
     jq
     pdftk
     poppler-utils
+    zotero
+    texlive.combined.scheme-full
   ];
 
    virtualisation.virtualbox.host.enable = true;
