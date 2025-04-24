@@ -126,6 +126,7 @@
     # sudo keymapp
     wget
     #neovim
+    ngrok
     gnugrep
     igrep
     xplugd
@@ -156,6 +157,10 @@
 
    virtualisation.virtualbox.host.enable = true;
    users.extraGroups.vboxusers.members = [ "nixi" ];
+
+   virtualisation.docker.enable = true;
+#   users.users.nixi.extraGroups = [ "docker" ];
+
 
    services.dbus.enable = true;
 # smt for bash scripts
@@ -237,10 +242,6 @@
     };
   };
 
-virtualisation.docker.rootless = {
-  enable = true;
-  setSocketVariable = true;
-};
 
 #  programs.hyprland = {
 #  enable = true;
