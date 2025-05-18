@@ -118,6 +118,11 @@
   environment.systemPackages = with pkgs; [
   #virtualbox
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pdfgrep
+    openconnect
+    orca-slicer
+    bambu-studio
+    cura-appimage
     gnumake
     #keymapp
     # to be able to edit the keyboard layout here what needed to do:
