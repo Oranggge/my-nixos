@@ -11,6 +11,8 @@
     ];
 
 #imports = [ <home-manager/nixos> ];
+  system.autoUpgrade.enable  = true;
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
