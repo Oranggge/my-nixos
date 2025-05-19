@@ -162,7 +162,8 @@ system.autoUpgrade = {
     autorandr
     xorg.xrandr
 
-    python39
+    pkgs.python3
+
     ollama
     protege
     jq
@@ -258,6 +259,7 @@ system.autoUpgrade = {
      ];
     };
   };
+
 
 
 #  programs.hyprland = {
